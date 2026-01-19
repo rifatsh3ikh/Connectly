@@ -6,7 +6,11 @@
 <div class="auth-card">
     <h2>Create Account</h2>
     <p class="auth-subtitle">Join Connectly in seconds</p>
-
+    
+    <a href="/accounts/google/login/" class="google-btn">
+        Continue with Google
+    </a>
+    
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
