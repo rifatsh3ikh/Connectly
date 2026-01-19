@@ -1,3 +1,4 @@
+
 {% extends "core/base.html" %}
 {% block title %}Login{% endblock %}
 
@@ -6,7 +7,6 @@
 <div class="auth-card">
     <h2>Welcome back</h2>
 
-    
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
