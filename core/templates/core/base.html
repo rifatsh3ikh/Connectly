@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Connectly{% endblock %}</title>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+{% include "core/components/navbar.html" %}
+
+
+<hr>
+
+{% block content %}{% endblock %}
+
+{% load static %}
+<script src="{% static 'core/app.js' %}"></script>
+
+</body>
+</html>

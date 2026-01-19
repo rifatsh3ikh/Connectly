@@ -1,0 +1,53 @@
+{% extends "core/base.html" %}
+{% block title %}{{ profile_user.username }}{% endblock %}
+
+{% block content %}
+
+<!-- Profile Header -->
+<div class="profile-card modern-profile">
+    <div class="profile-top">
+        {% if profile_user.profile.profile_image %}
+            <img src="{{ profile_user.profile.profile_image.url }}" class="profile-avatar">
+        {% else %}
+            <div class="profile-avatar placeholder">👤</div>
+        {% endif %}
+
+        <div class="profile-info">
+            <h2>{{ profile_user.username }}</h2>
+
+            <div class="profile-stats">
+                <div>
+                    <strong>{{ followers_count }}</strong>
+                    <span>Followers</span>
+                </div>
+                <div>
+                    <strong>{{ following_count }}</strong>
+                    <span>Following</span>
+                </div>
+            </div>
+
+            {% if user != profile_user %}
+            <div class="profile-actions">
+                <a href="{% url 'follow' profile_user.username %}" class="btn-primary">Follow</a>
+                <a href="{% url 'chat' profile_user.username %}" class="btn-secondary">Message</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Posts -->
+<h3 class="section-title">Posts</h3>
+
+<div class="profile-posts">
+{% for post in posts %}
+    <div class="post-card">
+        <p class="post-content">{{ post.content }}</p>
+        <small class="muted">{{ post.created_at }}</small>
+    </div>
+{% empty %}
+    <p class="muted">No posts yet.</p>
+{% endfor %}
+</div>
+
+{% endblock %}
