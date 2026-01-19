@@ -13,7 +13,6 @@ from rest_framework.response import Response
 
 @login_required
 def feed(request):
-
     posts = Post.objects.all().order_by("-created_at")
 
     if request.user.is_authenticated:

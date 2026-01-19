@@ -42,13 +42,6 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.sites",
-
-    "allauth",
-    "allauth.account",
-    "allauth.socialaccount",
-    "allauth.socialaccount.providers.google",
-
     'core',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -70,8 +63,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    'allauth.account.middleware.AccountMiddleware',
-
 ]
 
 
@@ -142,18 +133,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-LOGIN_URL = "/login/"
+LOGIN_URL = "/admin/login/"
 
 LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = "/"
-
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = "email"
-ACCOUNT_EMAIL_VERIFICATION = "none"
-
-SOCIALACCOUNT_LOGIN_ON_GET = True
-
+LOGOUT_REDIRECT_URL = "/login/"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
@@ -194,10 +177,3 @@ CHANNEL_LAYERS = {
         },
     },
 }
-
-SITE_ID = 1
-
-AUTHENTICATION_BACKENDS = (
-    "django.contrib.auth.backends.ModelBackend",
-    "allauth.account.auth_backends.AuthenticationBackend",
-)
