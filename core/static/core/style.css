@@ -840,6 +840,11 @@ textarea:has(+ .errorlist) {
         margin: 90px auto;
     }
     
+    .navbar{
+        max-height: 50px;
+        padding: 12px 5px ;
+    }
+
     .nav-center input {
         width: 220px;
         padding: 6px 12px;
@@ -862,7 +867,7 @@ textarea:has(+ .errorlist) {
     
     .navbar{
         max-height: 50px;
-        padding: 12px 6px ;
+        padding: 12px 5px ;
     }
     
     .nav-center input {
