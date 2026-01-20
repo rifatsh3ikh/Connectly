@@ -29,17 +29,21 @@ def feed(request):
     })
 
 
+from .forms import CustomSignupForm
+from django.contrib.auth import login
+
 def signup(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = CustomSignupForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             return redirect("feed")
     else:
-        form = UserCreationForm()
+        form = CustomSignupForm()
 
     return render(request, "core/signup.html", {"form": form})
+
 
 @login_required
 def like_post(request, post_id):
@@ -182,8 +186,6 @@ def load_posts(request):
 
     return JsonResponse(data, safe=False)
 
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
 from .serializers import PostSerializer
 
 @api_view(["GET"])
@@ -193,7 +195,12 @@ def api_feed(request):
     serializer = PostSerializer(posts, many=True)
     return Response(serializer.data)
 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
+from django.contrib.auth import authenticate
+
+from .models import Post, Notification
 from django.contrib.auth import authenticate
 
 @api_view(["POST"])
