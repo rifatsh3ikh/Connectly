@@ -1,28 +1,57 @@
-
 {% extends "core/base.html" %}
 {% block title %}Login{% endblock %}
 
 {% block content %}
-
 <div class="auth-card">
-    <h2>Welcome back</h2>
-  
-    <form method="post">
-      {% csrf_token %}
-  
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" name="username" required>
-      </div>
-  
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" name="password" required>
-      </div>
-  
-      <button type="submit" class="btn-primary">Login</button>
-    </form>
-  </div>
-  
+  <h2>Welcome back</h2>
 
+  <form method="post">
+    {% csrf_token %}
+
+    <!-- EMAIL / USERNAME FIELD -->
+    <div class="form-group">
+      <label>Email</label>
+
+      <input
+        type="email"
+        name="username"
+        value="{{ request.POST.username }}"
+        class="form-input {% if form.errors.username or form.non_field_errors %}error{% endif %}"
+        required
+      >
+
+      {% if form.errors.username %}
+        <small class="error-text">{{ form.errors.username.0 }}</small>
+      {% endif %}
+    </div>
+
+    <!-- PASSWORD FIELD -->
+    <div class="form-group">
+      <label>Password</label>
+
+      <div class="password-field">
+        <input
+          type="password"
+          id="login-password"
+          name="password"
+          class="form-input {% if form.errors.password or form.non_field_errors %}error{% endif %}"
+          required
+        >
+        <span class="toggle-password"
+              onclick="togglePassword('login-password', this)">👁</span>
+      </div>
+
+      {% if form.errors.password %}
+        <small class="error-text">{{ form.errors.password.0 }}</small>
+      {% endif %}
+    </div>
+
+    <!-- GENERAL LOGIN ERROR -->
+    {% if form.non_field_errors %}
+      <small class="error-text">{{ form.non_field_errors.0 }}</small>
+    {% endif %}
+
+    <button type="submit" class="btn-primary">Login</button>
+  </form>
+</div>
 {% endblock %}

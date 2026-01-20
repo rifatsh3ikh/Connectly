@@ -484,9 +484,8 @@ body.dark .notification-item:hover {
     background: #ffffff;
     padding: 28px;
     border-radius: 16px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.445);
 }
-
 
 .auth-card h2 {
     text-align: center;
@@ -503,6 +502,10 @@ body.dark .notification-item:hover {
     font-size: 14px;
     color: #ffffff;
   }
+
+  body:not(.dark) .auth-card label {
+  color: #000000;
+}
 
   .form-group input {
     padding: 12px;
@@ -547,6 +550,21 @@ body.dark .notification-item:hover {
     font-size: 14px;
 }
 
+/* =========================
+   FORCE LIGHT MODE INPUT FIX
+========================= */
+body:not(.dark) .auth-card input {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ddd;
+  
+}
+
+body:not(.dark) .auth-card input::placeholder {
+    color: #9ca3af;
+  }
+  
+
 .auth-card input:focus {
     outline: none;
     border-color: #3b82f6;
@@ -560,8 +578,8 @@ body.dark .notification-item:hover {
     background: #3b82f6;
     color: #ffffff;
 
-    border: 1px solid #2563eb;   /* border color */
-    border-radius: 25px;          /* square + rounded edges */
+    border: 1px solid #2563eb;  
+    border-radius: 25px;          
 
     padding: 12px 26px;
     font-weight: 700;
@@ -607,6 +625,8 @@ body.dark .auth-card .btn-primary:hover {
 body.dark .auth-card {
     background: #1f1f1f;
     box-shadow: none;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px #3b82f6;
 }
 
 body.dark .auth-card input {
@@ -622,14 +642,6 @@ body.dark .auth-subtitle {
 /* =========================
    AUTH (LOGIN / SIGNUP)
 ========================= */
-.auth-card {
-    max-width: 420px;
-    margin: 70px auto;
-    background: #ffffff;
-    padding: 28px;
-    border-radius: 16px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-}
 
 .auth-card h2 {
     text-align: center;
@@ -664,6 +676,8 @@ body.dark .auth-subtitle {
 body.dark .auth-card {
     background: #1f1f1f;
     box-shadow: none;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(59, 131, 246, 0.425);
 }
 
 body.dark .auth-card input {
@@ -750,3 +764,127 @@ body.dark .nav-signup:hover {
   margin-left: 6px;
 }
 
+.password-field {
+    position: relative;
+  }
+  
+  .password-field input {
+    width: 100%;
+    padding-right: 44px;
+  }
+  
+  .toggle-password {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+    opacity: 0.6;
+  }
+  
+  .toggle-password:hover {
+    opacity: 1;
+  }
+  
+  /* ========== FORM BASE STYLES ========== */
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 0.65rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  
+  /* ========== INLINE ERROR STYLES ========== */
+  .form-input.error {
+    border: 2px solid #e53935;
+  }
+  
+  .error-text {
+    color: #e53935;
+    font-size: 0.85rem;
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* ========== DJANGO DEFAULT FORM ERRORS (as_p) ========== */
+
+/* Error list text */
+.errorlist {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+  color: #e53935;
+  font-size: 0.85rem;
+}
+
+/* Red border for invalid inputs */
+input:has(+ .errorlist),
+select:has(+ .errorlist),
+textarea:has(+ .errorlist) {
+  border: 2px solid #e53935;
+}
+
+/* ========== AUTH CARD (MOBILE FIRST) ========== */
+.auth-card {
+  width: 100%;
+  min-height: 100vh;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+/* Headings spacing */
+.auth-card h2 {
+  margin-bottom: 0.25rem;
+}
+
+.auth-subtitle {
+  margin-bottom: 1.5rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Buttons full width on mobile */
+.btn-primary,
+button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+/* ========== TABLET & DESKTOP ========== */
+@media (min-width: 768px) {
+  .auth-card {
+    max-width: 420px;
+    min-height: auto;
+    margin: 4rem auto;
+    padding: 2rem;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  }
+}
+* {
+    box-sizing: border-box;
+  }
+  .password-field {
+    position: relative;
+  }
+  
+  .password-field input {
+    padding-right: 2.5rem;
+  }
+  
+  .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  

@@ -130,3 +130,20 @@ const darkModeBtn = document.getElementById("darkModeBtn");
   if (localStorage.getItem("theme") === "dark") {
     document.documentElement.classList.add("dark");
   }
+
+  function togglePassword(inputId, icon) {
+    const input = document.getElementById(inputId);
+  
+    if (!input) {
+      console.error("Password input not found:", inputId);
+      return;
+    }
+  
+    if (input.type === "password") {
+      input.type = "text";
+      icon.textContent = "🙈";
+    } else {
+      input.type = "password";
+      icon.textContent = "👁";
+    }
+  }
