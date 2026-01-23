@@ -47,7 +47,7 @@ To run this project locally, follow these steps:
 3.  **Install dependencies:**
     The project relies on several Python packages. Install them using pip:
     ```bash
-    pip install django djangorestframework channels channels_redis gunicorn uvicorn dj-database-url python-dotenv whitenoise
+    pip install -r requirements.txt
     ```
 
 4.  **Set up environment variables:**
